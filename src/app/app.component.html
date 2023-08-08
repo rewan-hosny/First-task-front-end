@@ -1,0 +1,76 @@
+
+  <div class="container">
+
+
+
+
+
+
+
+
+      <div class="box-table">
+
+      <div  class="table-responsive custom-table-responsive custom">
+
+        <table class="table custom-table">
+          <thead>
+            <tr>  
+
+              
+              
+ <th *ngFor="let header of responseModel.dataFile.headers">{{ header }}</th>
+
+    
+
+            </tr>
+          </thead>
+       
+  <tbody>
+    <ng-container *ngFor="let row of responseModel.dataFile.rows; let i = index">
+      <tr  scope="row">
+        <td *ngFor="let cell of row">{{ cell }}</td>
+      </tr>
+      <tr class="spacer"><td colspan="100"></td></tr>
+    </ng-container>
+  </tbody>
+
+
+        </table>
+      </div>
+              <div *ngIf="isDownloadable" class="row mb-3  box">
+      <div class=" CsvFile col-6">
+       
+        <input type="file" id="csv_file" style="display: none;" (change)="onFileSelected($event)">
+        <label for="csv_file" class="CsvLabel">
+          <p>Upload The file </p>
+        </label>
+        </div>
+     
+      <div  class=" CsvFile col-6 ">
+<a href="https://localhost:7228{{responseModel.excelDownloadLink}}"class="execelButton" download="data.xlsx">
+  Download the Data As XLSX</a>
+      </div>
+    </div>
+                  <div *ngIf="!isDownloadable" class="row mb-3  box">
+      <div class=" CsvFile ">
+       
+        <input type="file" id="csv_file" style="display: none;" (change)="onFileSelected($event)">
+        <label for="csv_file" class="CsvLabel">
+          <p>Upload The file </p>
+        </label>
+        </div></div>
+    <div *ngIf="errorMessage" class="messageErrorr">
+  {{ errorMessage }}
+</div>
+
+<!-- Rest of your template -->
+
+</div>
+      
+
+ 
+   
+
+
+
+ 
